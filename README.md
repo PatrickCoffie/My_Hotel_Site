@@ -5,6 +5,11 @@ The site includes pages for **Home, About, Rooms, Booking, Gallery, Contact, and
 
 ---
 
+##  Group Details 
+**Group Name:** N/A (Worked Individually)
+- **Members:**
+  - Patrick Coffie  01247018B
+
 ## Features
 - Responsive homepage with navigation
 - About page with hotel details
@@ -46,10 +51,9 @@ I kindly ask for your **pardon and understanding**.
 
 ---
 
-## Live Demo (if enabled)
-[Visit Site](https://patrickcoffie.github.io/My_Hotel_Site/)
+## Live Demo 
+My site is hosted on Netlify and can be accessed here: [https://papaya-dolphin-def1f3.netlify.app/](https://papaya-dolphin-def1f3.netlify.app/)
 
----
 
 ## Contact
 **Patrick Coffie**  
