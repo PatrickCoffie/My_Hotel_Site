@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback — The Grand Haven Hotel</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Feedback Popup Styling */
+    #feedbackModal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .feedback-popup {
+      background: #fff;
+      padding: 25px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 450px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: slideDown 0.3s ease;
+    }
+    .feedback-popup h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #333;
+    }
+    .feedback-popup .form-group {
+      margin-bottom: 15px;
+    }
+    .feedback-popup label {
+      font-weight: bold;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .feedback-popup input, 
+    .feedback-popup textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .feedback-popup button {
+      width: 100%;
+      padding: 12px;
+      background: #d4af37;
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .feedback-popup button:hover {
+      background: #b9972f;
+    }
+    .close-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      float: right;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.jpg" alt="The Grand Haven Hotel" class="logo">
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link" data-translate="navHome">Home</a>
+      <a href="about.html" class="nav-link" data-translate="navAbout">About</a>
+      <a href="rooms.html" class="nav-link" data-translate="navRooms">Rooms</a>
+      <a href="booking.html" class="btn" data-translate="navBooking">Book Now</a>
+      <a href="gallery.html" class="nav-link" data-translate="navGallery">Gallery</a>
+
+      <!-- Language Selector -->
+      <div class="dropdown nav-link">
+        <button class="nav-link dropbtn" id="langBtn">EN ▾</button>
+        <div class="dropdown-content">
+          <a href="#" data-lang="en">English</a>
+          <a href="#" data-lang="fr">Français</a>
+          <a href="#" data-lang="es">Español</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Feedback Modal -->
+  <div id="feedbackModal">
+    <div class="feedback-popup">
+      <button class="close-btn" id="closeFeedback">X</button>
+      <h2 data-translate="feedbackHeading">We Value Your Feedback</h2>
+      <form id="popupFeedbackForm">
+        <div class="form-group">
+          <label for="popupName" data-translate="feedbackName">Your Name:</label>
+          <input type="text" id="popupName" placeholder="" data-placeholder-en="Enter your name" data-placeholder-fr="Entrez votre nom" data-placeholder-es="Ingrese su nombre" required>
+        </div>
+        <div class="form-group">
+          <label for="popupEmail" data-translate="feedbackEmail">Your Email:</label>
+          <input type="email" id="popupEmail" placeholder="" data-placeholder-en="Enter your email" data-placeholder-fr="Entrez votre email" data-placeholder-es="Ingrese su correo electrónico" required>
+        </div>
+        <div class="form-group">
+          <label for="popupMessage" data-translate="feedbackMessage">Your Feedback:</label>
+          <textarea id="popupMessage" rows="5" placeholder="" data-placeholder-en="Write your feedback here..." data-placeholder-fr="Écrivez votre avis ici..." data-placeholder-es="Escriba sus comentarios aquí..." required></textarea>
+        </div>
+        <button type="submit" data-translate="feedbackBtn">Submit Feedback</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Buttons -->
+  <div class="contact-floating">
+    <button id="contactToggle" class="contact-btn">
+      <img src="assets/chat-bubble-svgrepo-com.svg" alt="Message" />
+    </button>
+    <div class="social-links">
+      <a href="https://wa.me/233599500764" target="_blank" class="social-btn">
+        <img src="assets/whatsapp-svgrepo-com.svg" alt="WhatsApp" />
+      </a>
+      <a href="https://instagram.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/instagram-1-svgrepo-com.svg" alt="Instagram" />
+      </a>
+      <a href="https://facebook.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/facebook-1-svgrepo-com.svg" alt="Facebook" />
+      </a>
+      <a href="https://x.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/X.png" alt="X" />
+      </a>
+    </div>
+  </div>
+
+  <div id="feedbackButton">
+    <button class="feedback-toggle">F</button>
+  </div>
+
+  <footer class="footer">
+    <p data-translate="footerText">© 2025 The Grand Haven Hotel. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // ===================== Translation Strings =====================
+    const translations = {
+      en: {
+        navHome: "Home",
+        navAbout: "About",
+        navRooms: "Rooms",
+        navBooking: "Book Now",
+        navGallery: "Gallery",
+        feedbackHeading: "We Value Your Feedback",
+        feedbackName: "Your Name:",
+        feedbackEmail: "Your Email:",
+        feedbackMessage: "Your Feedback:",
+        feedbackBtn: "Submit Feedback",
+        footerText: "© 2025 The Grand Haven Hotel. All rights reserved."
+      },
+      fr: {
+        navHome: "Accueil",
+        navAbout: "À propos",
+        navRooms: "Chambres",
+        navBooking: "Réserver",
+        navGallery: "Galerie",
+        feedbackHeading: "Nous apprécions vos commentaires",
+        feedbackName: "Votre nom:",
+        feedbackEmail: "Votre email:",
+        feedbackMessage: "Vos commentaires:",
+        feedbackBtn: "Envoyer",
+        footerText: "© 2025 L'Hôtel Grand Haven. Tous droits réservés."
+      },
+      es: {
+        navHome: "Inicio",
+        navAbout: "Acerca de",
+        navRooms: "Habitaciones",
+        navBooking: "Reservar",
+        navGallery: "Galería",
+        feedbackHeading: "Valoramos sus comentarios",
+        feedbackName: "Su nombre:",
+        feedbackEmail: "Su correo electrónico:",
+        feedbackMessage: "Sus comentarios:",
+        feedbackBtn: "Enviar",
+        footerText: "© 2025 El Hotel Grand Haven. Todos los derechos reservados."
+      }
+    };
+
+    // ===================== Apply Language =====================
+    function applyLanguage(lang) {
+      document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (translations[lang][key]) el.textContent = translations[lang][key];
+      });
+
+      document.querySelectorAll("input, textarea").forEach(el => {
+        const placeholderKey = "placeholder-" + lang;
+        if (el.dataset[placeholderKey]) el.placeholder = el.dataset[placeholderKey];
+      });
+
+      document.getElementById("langBtn").textContent = lang.toUpperCase() + " ▾";
+    }
+
+    function setLanguage(lang) {
+      localStorage.setItem("preferredLang", lang);
+      applyLanguage(lang);
+    }
+
+    const savedLang = localStorage.getItem("preferredLang") || "en";
+    applyLanguage(savedLang);
+
+    document.querySelectorAll(".dropdown-content a").forEach(item => {
+      item.addEventListener("click", e => {
+        e.preventDefault();
+        const lang = item.getAttribute("data-lang");
+        setLanguage(lang);
+      });
+    });
+
+    // ===================== Nav Active =====================
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".nav-link").forEach(link => {
+      if (link.getAttribute("href") === currentPage) link.classList.add("active");
+    });
+
+    // ===================== Feedback Modal =====================
+    const feedbackBtn = document.querySelector(".feedback-toggle");
+    const feedbackModal = document.getElementById("feedbackModal");
+    const closeBtn = document.getElementById("closeFeedback");
+
+    feedbackBtn.addEventListener("click", () => feedbackModal.style.display = "flex");
+    closeBtn.addEventListener("click", () => feedbackModal.style.display = "none");
+
+    document.getElementById("popupFeedbackForm").addEventListener("submit", e => {
+      e.preventDefault();
+      alert(translations[savedLang].feedbackBtn + " " + "successful!");
+      feedbackModal.style.display = "none";
+      e.target.reset();
+    });
+
+    // ===================== Floating Contact =====================
+    const toggle = document.getElementById("contactToggle");
+    const links = document.querySelector(".social-links");
+    toggle.addEventListener("click", () => links.classList.toggle("show"));
+  </script>
+</body>
+</html>

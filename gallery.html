@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gallery — The Grand Haven Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Gallery heading animation */
+    .page-heading {
+      display: inline-block;
+      position: relative;
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .page-heading::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0;
+      height: 3px;
+      background: #d4af37;
+      transition: width 0.6s ease-in-out;
+    }
+    .page-heading.animate::after {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.jpg" alt="The Grand Haven Hotel" class="logo" />
+    </a>
+    <nav class="nav">
+      <a href="index.html" class="nav-link" data-translate="navHome">Home</a>
+      <a href="about.html" class="nav-link" data-translate="navAbout">About</a>
+      <a href="rooms.html" class="nav-link" data-translate="navRooms">Rooms</a>
+      <a href="booking.html" class="btn" data-translate="navBooking">Book Now</a>
+      <a href="gallery.html" class="nav-link active" data-translate="navGallery">Gallery</a>
+
+      <!-- Language Selector -->
+      <div class="dropdown nav-link">
+        <button class="nav-link dropbtn" id="langBtn">EN ▾</button>
+        <div class="dropdown-content">
+          <a href="#" data-lang="en">English</a>
+          <a href="#" data-lang="fr">Français</a>
+          <a href="#" data-lang="es">Español</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Gallery Section -->
+  <section class="gallery-section">
+    <h2 class="page-heading" data-translate="galleryHeading">Gallery</h2>
+    <div class="gallery-grid">
+      <img src="assets/reception.jpg" alt="Reception" />
+      <img src="assets/room-deluxe.jpg" alt="Room Deluxe" />
+      <img src="assets/room-suite.jpg" alt="Room Suite" />
+      <img src="assets/room-standard.jpg" alt="Room Standard" />
+      <img src="assets/poool.jpg" alt="Poool" />
+      <img src="assets/hotel-bar.jpg" alt="Hotel Bar" />
+      <img src="assets/exterior.jpg" alt="Exterior" />
+      <img src="assets/meeting-hall.jpg" alt="Meeting Hall" />
+      <img src="assets/gym.jpg" alt="Hotel Gym" />
+      <img src="assets/lounge.jpg" alt="Lounge" />
+      <img src="assets/restaurant.jpg" alt="Restaurant" />
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p data-translate="footerText">© 2025 The Grand Haven Hotel. All rights reserved.</p>
+  </footer>
+
+  <a href="feedback.html" class="feedback-btn">F<span>eedback</span></a>
+
+  <!-- Floating Contact -->
+  <div class="contact-floating">
+    <button id="contactToggle" class="contact-btn">
+      <img src="assets/chat-bubble-svgrepo-com.svg" alt="Message" />
+    </button>
+    <div class="social-links">
+      <a href="https://wa.me/233599500764" target="_blank" class="social-btn">
+        <img src="assets/whatsapp-svgrepo-com.svg" alt="WhatsApp" />
+      </a>
+      <a href="https://instagram.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/instagram-1-svgrepo-com.svg" alt="Instagram" />
+      </a>
+      <a href="https://facebook.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/facebook-1-svgrepo-com.svg" alt="Facebook" />
+      </a>
+      <a href="https://x.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/X.png" alt="X" />
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // ===================== Translation Strings =====================
+    const translations = {
+      en: {
+        navHome: "Home",
+        navAbout: "About",
+        navRooms: "Rooms",
+        navBooking: "Book Now",
+        navGallery: "Gallery",
+        galleryHeading: "Gallery",
+        footerText: "© 2025 The Grand Haven Hotel. All rights reserved."
+      },
+      fr: {
+        navHome: "Accueil",
+        navAbout: "À propos",
+        navRooms: "Chambres",
+        navBooking: "Réserver",
+        navGallery: "Galerie",
+        galleryHeading: "Galerie",
+        footerText: "© 2025 L'Hôtel Grand Haven. Tous droits réservés."
+      },
+      es: {
+        navHome: "Inicio",
+        navAbout: "Acerca de",
+        navRooms: "Habitaciones",
+        navBooking: "Reservar",
+        navGallery: "Galería",
+        galleryHeading: "Galería",
+        footerText: "© 2025 El Hotel Grand Haven. Todos los derechos reservados."
+      }
+    };
+
+    // ===================== Apply Language =====================
+    function applyLanguage(lang) {
+      document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+      document.getElementById("langBtn").textContent = lang.toUpperCase() + " ▾";
+    }
+
+    function setLanguage(lang) {
+      localStorage.setItem("preferredLang", lang);
+      applyLanguage(lang);
+    }
+
+    // Load saved language on page load
+    const savedLang = localStorage.getItem("preferredLang") || "en";
+    applyLanguage(savedLang);
+
+    // Language dropdown clicks
+    document.querySelectorAll(".dropdown-content a").forEach(item => {
+      item.addEventListener("click", e => {
+        e.preventDefault();
+        const lang = item.getAttribute("data-lang");
+        setLanguage(lang);
+      });
+    });
+
+    // ===================== Highlight Active Nav Link =====================
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".nav-link").forEach(link => {
+      if (link.getAttribute("href") === currentPage) link.classList.add("active");
+    });
+
+    // ===================== Animate Heading =====================
+    const heading = document.querySelector(".page-heading");
+    if (heading) setTimeout(() => heading.classList.add("animate"), 300);
+
+    // ===================== Floating Contact Toggle =====================
+    const toggle = document.getElementById("contactToggle");
+    const links = document.querySelector(".social-links");
+    if (toggle && links) {
+      toggle.addEventListener("click", () => links.classList.toggle("show"));
+    }
+  </script>
+</body>
+</html>

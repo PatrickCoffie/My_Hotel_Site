@@ -1,0 +1,625 @@
+/* Reset default margin/padding */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #111827;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* full viewport height */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d4af37; /* Gold */
+  padding: 10px 20px;
+}
+
+.navbar .brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo {
+  height: 50px;
+  width: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.navbar .nav {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar .nav-link {
+  position: relative;        /* for underline */
+  text-decoration: none;
+  color: #111827;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+  color: #ffffff;
+}
+
+/* Nav underline animation for links (excluding Book Now button) */
+.navbar .nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background-color: #d4af37; /* gold underline */
+  transition: width 0.3s ease;
+}
+.nav-link.active {
+  font-weight: bold;
+  color: #d4af37; /* Gold highlight */
+  border-bottom: 2px solid #d4af37;
+}
+
+.navbar .nav-link:hover::after,
+.navbar .nav-link.active::after {
+  width: 100%;
+}
+
+/* Book Now button */
+.navbar .btn {
+  background: #111827;
+  color: #ffffff;
+  padding: 8px 15px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.navbar .btn:hover {
+  background: #333333;
+}
+
+/* Active state specifically for buttons */
+.navbar .btn.active {
+  background: #111827; /* keep the same as normal */
+  color: #ffffff;      /* keep text color */
+  padding: 8px 15px;   /* maintain spacing */
+}
+
+/* ==========================
+   Dropdown (Language Selector)
+   ========================== */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.dropbtn:hover,
+.dropdown:hover .dropbtn {
+  color: #ffffff; /* same hover effect as nav-link */
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 120px;
+  box-shadow: 0px 4px 6px rgba(0,0,0,0.15);
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+.dropdown-content a {
+  color: #111827;
+  padding: 10px 14px;
+  text-decoration: none;
+  display: block;
+  font-size: 0.9rem;
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Hero Section */
+.hero {
+  position: relative;
+  height: 90vh;
+  background: 
+  linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+  url('assets/background.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff;
+}
+
+/* ===========================
+   Homepage Hero Headings
+   =========================== */
+.hero .page-headings h1.page-heading {
+  font-size: 5rem;  /* bigger */
+  font-weight: bold;
+  color: #ffffff !important;  /* force white */
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.6), 0 0 20px rgba(255,255,255,0.7);
+  animation: glowPulse 2.5s infinite alternate;
+  opacity: 1 !important;  /* ensure visible */
+  transform: translateY(0) !important;
+}
+
+.hero .page-headings h2 {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6), 0 0 20px rgba(255,255,255,0.7);
+  animation: glowPulse 2.5s infinite alternate;
+}
+
+/* Remove underline for homepage hero headings */
+.hero .page-headings h1.page-heading::after,
+.hero .page-headings h2::after {
+  display: none;
+}
+
+/* Glow animation */
+@keyframes glowPulse {
+  0% {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6), 0 0 5px rgba(255,255,255,0.2);
+  }
+  50% {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6), 0 0 15px rgba(255,255,255,0.5);
+  }
+  100% {
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.6), 0 0 10px rgba(255,255,255,0.3);
+  }
+}
+
+/* Content Section */
+.content {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 20px;
+  text-align: center;
+  flex: 1;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 1rem;
+  color: #444;
+}
+
+/* Forms */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.btn {
+  background: #d4af37;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #b89329;
+}
+
+/* Footer */
+.footer {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+}
+
+/* Gallery Section */
+.gallery-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.gallery-section h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-grid img:hover {
+  transform: scale(1.05);
+}
+
+/* Rooms Section */
+.rooms-section {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.rooms-section h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: var(--text);
+}
+
+.rooms-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.room-card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease-in-out;
+  text-align: left;
+}
+
+.room-card:hover {
+  transform: translateY(-5px);
+}
+
+.room-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.room-info {
+  padding: 15px;
+}
+
+.room-info h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.room-info p {
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  color: var(--muted);
+}
+
+.room-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.price {
+  font-weight: bold;
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+.rating {
+  color: #f5c518; /* gold-like star color */
+  font-size: 1rem;
+}
+
+.room-card .btn {
+  display: inline-block;
+}
+
+.btn-book {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 18px;
+  background: var(--gold);
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
+}
+
+.btn-book:hover {
+  background: #b8860b; /* darker gold */
+}
+
+/* Floating Feedback Button */
+.feedback-btn {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  background-color: #d4af37;
+  color: white;
+  height: 50px;        /* fixed height */
+  width: 30px;         /* collapsed width */
+  display: flex;
+  align-items: center;
+  justify-content: center;  /* keeps F centered */
+  border-radius: 8px 0 0 8px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+  white-space: nowrap;
+  transition: width 0.3s ease, padding 0.3s ease;
+  overflow: hidden;
+}
+
+/* Span text hidden initially */
+.feedback-btn span {
+  display: none;   /* fully hide until hover */
+}
+
+/* On hover expand and reveal span */
+.feedback-btn:hover {
+  width: 140px;          /* expand into the page */
+  justify-content: flex-start;
+  padding-left: 12px;
+}
+
+.feedback-btn:hover span {
+  display: inline;       /* show text when hovered */
+}
+
+/* Floating Contact Button */
+.contact-floating {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1100;
+  display: flex;
+  flex-direction: column-reverse; /* makes socials appear above */
+  align-items: center;
+}
+
+.contact-btn {
+  background: #d4af37;
+  border: none;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: scale(1.1);
+}
+
+.contact-btn img {
+  width: 28px;
+  height: 28px;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.social-links.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.social-btn {
+  background: #111827;
+  margin: 8px 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.social-btn img {
+  width: 24px;
+  height: 24px;
+}
+
+.social-btn:hover {
+  background: #d4af37;
+  transform: scale(1.1);
+}
+
+/* Feedback Button (left bottom corner) */
+#feedbackButton {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.feedback-toggle {
+  background: #d4af37; /* gold */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Base style for all headings */
+.page-heading {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  opacity: 0;              /* hidden before animation */
+  transform: translateY(30px); /* slide up effect */
+  color: #111827;          /* default text color */
+}
+
+/* Animated underline for headings (other pages) */
+.page-heading::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 0;
+  height: 3px;
+  background-color: #d4af37; /* gold underline */
+  transition: width 0.5s ease, left 0.5s ease;
+}
+
+/* Animate heading + underline */
+.page-heading.animate {
+  animation: slideIn 1s forwards;
+}
+
+.page-heading.animate::after {
+  width: 100%;
+  left: 0; /* expands underline from center to full width */
+}
+
+/* Sub-heading under main heading */
+.sub-heading {
+  font-size: 1.8rem;  /* smaller than main heading */
+  margin-top: 10px;   /* spacing below the hotel name */
+}
+
+/* Slide in animation */
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Make main content grow to fill space */
+.about, .content, .rooms-section, .gallery-section {
+  flex: 1;
+}
+
+/* Footer stays at bottom */
+.footer {
+  background: #111827;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+.about-heading {
+  text-align: center;      /* centers text horizontally */
+  margin: 40px 0;          /* adds spacing above and below */
+}
+.hero-description {
+  margin: 50px auto;
+  max-width: 900px;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: #333; /* slightly softer white */
+}
+
+/* Hotel description section */
+.hotel-description {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--text);
+  text-align: center;
+}

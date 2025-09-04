@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rooms — The Grand Haven Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.jpg" alt="The Grand Haven Hotel" class="logo" />
+    </a>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link" data-translate="navHome">Home</a>
+      <a href="about.html" class="nav-link" data-translate="navAbout">About</a>
+      <a href="rooms.html" class="nav-link" data-translate="navRooms">Rooms</a>
+      <a href="booking.html" class="btn" data-translate="navBooking">Book Now</a>
+      <a href="gallery.html" class="nav-link" data-translate="navGallery">Gallery</a>
+
+      <!-- Language Selector -->
+      <div class="dropdown nav-link">
+        <button class="nav-link dropbtn" id="langBtn">EN ▾</button>
+        <div class="dropdown-content">
+          <a href="#" data-lang="en">English</a>
+          <a href="#" data-lang="fr">Français</a>
+          <a href="#" data-lang="es">Español</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="rooms-section">
+    <h2 class="page-heading" data-translate="roomsHeading">Our Rooms</h2>
+    <div class="rooms-grid">
+
+      <div class="room-card">
+        <img src="assets/room-deluxe.jpg" alt="Deluxe Room">
+        <div class="room-info">
+          <h3 data-translate="deluxeTitle">Deluxe Room</h3>
+          <p data-translate="deluxeDesc">Spacious and elegant with modern amenities.</p>
+          <div class="room-meta">
+            <span class="price" data-translate="deluxePrice">$130 / night</span>
+            <span class="rating">⭐⭐⭐⭐☆</span>
+          </div>
+          <a href="booking.html" class="btn" data-translate="bookBtn">Book Now</a>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="assets/room-suite.jpg" alt="Suite Room">
+        <div class="room-info">
+          <h3 data-translate="suiteTitle">Executive Suite</h3>
+          <p data-translate="suiteDesc">Luxury suite with city view and premium service.</p>
+          <div class="room-meta">
+            <span class="price" data-translate="suitePrice">$210 / night</span>
+            <span class="rating">⭐⭐⭐⭐⭐</span>
+          </div>
+          <a href="booking.html" class="btn" data-translate="bookBtn">Book Now</a>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="assets/room-standard.jpg" alt="Standard Room">
+        <div class="room-info">
+          <h3 data-translate="standardTitle">Standard Room</h3>
+          <p data-translate="standardDesc">Comfortable and affordable for every traveler.</p>
+          <div class="room-meta">
+            <span class="price" data-translate="standardPrice">$90 / night</span>
+            <span class="rating">⭐⭐⭐☆☆</span>
+          </div>
+          <a href="booking.html" class="btn" data-translate="bookBtn">Book Now</a>
+        </div>
+      </div>
+
+      <div class="room-card">
+        <img src="assets/family-suite.jpg" alt="Family Suite">
+        <div class="room-info">
+          <h3 data-translate="familyTitle">Family Suite</h3>
+          <p data-translate="familyDesc">Perfect for families with extra space and comfort.</p>
+          <div class="room-meta">
+            <span class="price" data-translate="familyPrice">$160 / night</span>
+            <span class="rating">⭐⭐⭐⭐☆</span>
+          </div>
+          <a href="booking.html" class="btn" data-translate="bookBtn">Book Now</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p data-translate="footerText">© 2025 The Grand Haven Hotel. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+  <a href="feedback.html" class="feedback-btn">F<span>eedback</span></a>
+
+  <!-- Floating Contact Button -->
+  <div class="contact-floating">
+    <button id="contactToggle" class="contact-btn">
+      <img src="assets/chat-bubble-svgrepo-com.svg" alt="Message" />
+    </button>
+    <div class="social-links">
+      <a href="https://wa.me/233599500764" target="_blank" class="social-btn">
+        <img src="assets/whatsapp-svgrepo-com.svg" alt="WhatsApp" />
+      </a>
+      <a href="https://instagram.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/instagram-1-svgrepo-com.svg" alt="Instagram" />
+      </a>
+      <a href="https://facebook.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/facebook-1-svgrepo-com.svg" alt="Facebook" />
+      </a>
+      <a href="https://x.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/X.png" alt="X" />
+      </a>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      en: {
+        navHome: "Home",
+        navAbout: "About",
+        navRooms: "Rooms",
+        navBooking: "Book Now",
+        navGallery: "Gallery",
+        roomsHeading: "Our Rooms",
+        deluxeTitle: "Deluxe Room",
+        deluxeDesc: "Spacious and elegant with modern amenities.",
+        deluxePrice: "$130 / night",
+        suiteTitle: "Executive Suite",
+        suiteDesc: "Luxury suite with city view and premium service.",
+        suitePrice: "$210 / night",
+        standardTitle: "Standard Room",
+        standardDesc: "Comfortable and affordable for every traveler.",
+        standardPrice: "$90 / night",
+        familyTitle: "Family Suite",
+        familyDesc: "Perfect for families with extra space and comfort.",
+        familyPrice: "$160 / night",
+        bookBtn: "Book Now",
+        footerText: "© 2025 The Grand Haven Hotel. All rights reserved."
+      },
+      fr: {
+        navHome: "Accueil",
+        navAbout: "À propos",
+        navRooms: "Chambres",
+        navBooking: "Réserver",
+        navGallery: "Galerie",
+        roomsHeading: "Nos Chambres",
+        deluxeTitle: "Chambre Deluxe",
+        deluxeDesc: "Spacieuse et élégante avec des équipements modernes.",
+        deluxePrice: "130 $ / nuit",
+        suiteTitle: "Suite Exécutive",
+        suiteDesc: "Suite de luxe avec vue sur la ville et service premium.",
+        suitePrice: "210 $ / nuit",
+        standardTitle: "Chambre Standard",
+        standardDesc: "Confortable et abordable pour tous les voyageurs.",
+        standardPrice: "90 $ / nuit",
+        familyTitle: "Suite Familiale",
+        familyDesc: "Parfaite pour les familles avec plus d'espace et de confort.",
+        familyPrice: "160 $ / nuit",
+        bookBtn: "Réserver",
+        footerText: "© 2025 L'Hôtel Grand Haven. Tous droits réservés."
+      },
+      es: {
+        navHome: "Inicio",
+        navAbout: "Acerca de",
+        navRooms: "Habitaciones",
+        navBooking: "Reservar",
+        navGallery: "Galería",
+        roomsHeading: "Nuestras Habitaciones",
+        deluxeTitle: "Habitación Deluxe",
+        deluxeDesc: "Espaciosa y elegante con comodidades modernas.",
+        deluxePrice: "130 $ / noche",
+        suiteTitle: "Suite Ejecutiva",
+        suiteDesc: "Suite de lujo con vista a la ciudad y servicio premium.",
+        suitePrice: "210 $ / noche",
+        standardTitle: "Habitación Estándar",
+        standardDesc: "Cómoda y asequible para todos los viajeros.",
+        standardPrice: "90 $ / noche",
+        familyTitle: "Suite Familiar",
+        familyDesc: "Perfecta para familias con más espacio y comodidad.",
+        familyPrice: "160 $ / noche",
+        bookBtn: "Reservar",
+        footerText: "© 2025 El Hotel Grand Haven. Todos los derechos reservados."
+      }
+    };
+
+    function applyLanguage(lang) {
+      document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (translations[lang][key]) el.textContent = translations[lang][key];
+      });
+      document.getElementById("langBtn").textContent = lang.toUpperCase() + " ▾";
+    }
+
+    function setLanguage(lang) {
+      localStorage.setItem("preferredLang", lang);
+      applyLanguage(lang);
+    }
+
+    const savedLang = localStorage.getItem("preferredLang") || "en";
+    applyLanguage(savedLang);
+
+    document.querySelectorAll(".dropdown-content a").forEach(item => {
+      item.addEventListener("click", e => {
+        e.preventDefault();
+        const lang = item.getAttribute("data-lang");
+        setLanguage(lang);
+      });
+    });
+
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".nav-link").forEach(link => {
+      if (link.getAttribute("href") === currentPage) link.classList.add("active");
+    });
+  </script>
+</body>
+</html>

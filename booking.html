@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Booking — The Grand Haven Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.jpg" alt="The Grand Haven Hotel" class="logo" />
+    </a>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link" data-translate="navHome">Home</a>
+      <a href="about.html" class="nav-link" data-translate="navAbout">About</a>
+      <a href="rooms.html" class="nav-link" data-translate="navRooms">Rooms</a>
+      <a href="booking.html" class="btn" data-translate="navBooking">Book Now</a>
+      <a href="gallery.html" class="nav-link" data-translate="navGallery">Gallery</a>
+
+      <!-- Language Selector -->
+      <div class="dropdown nav-link">
+        <button class="nav-link dropbtn" id="langBtn">EN ▾</button>
+        <div class="dropdown-content">
+          <a href="#" data-lang="en">English</a>
+          <a href="#" data-lang="fr">Français</a>
+          <a href="#" data-lang="es">Español</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Booking Form -->
+  <section class="content">
+    <h1 class="page-heading" data-translate="bookingHeading">Book Your Stay</h1>
+    <div id="bookingFormContainer">
+      <form id="bookingForm">
+        <div class="form-group">
+          <label for="name" data-translate="bookingName">Full Name:</label>
+          <input type="text" id="name" placeholder="" 
+                 data-placeholder-en="Enter your full name"
+                 data-placeholder-fr="Entrez votre nom complet"
+                 data-placeholder-es="Ingrese su nombre completo" required />
+        </div>
+
+        <div class="form-group">
+          <label for="email" data-translate="bookingEmail">Email:</label>
+          <input type="email" id="email" placeholder=""
+                 data-placeholder-en="Enter your email"
+                 data-placeholder-fr="Entrez votre email"
+                 data-placeholder-es="Ingrese su correo electrónico" required />
+        </div>
+
+        <div class="form-group">
+          <label for="phone" data-translate="bookingPhone">Phone:</label>
+          <input type="tel" id="phone" placeholder=""
+                 data-placeholder-en="Enter your phone number"
+                 data-placeholder-fr="Entrez votre numéro de téléphone"
+                 data-placeholder-es="Ingrese su número de teléfono" required />
+        </div>
+
+        <div class="form-group">
+          <label for="checkin" data-translate="bookingCheckin">Check-in Date:</label>
+          <input type="date" id="checkin" required />
+        </div>
+
+        <div class="form-group">
+          <label for="checkout" data-translate="bookingCheckout">Check-out Date:</label>
+          <input type="date" id="checkout" required />
+        </div>
+
+        <div class="form-group">
+          <label for="guests" data-translate="bookingGuests">Number of Guests:</label>
+          <input type="number" id="guests" min="1" max="10" required />
+        </div>
+
+        <button type="submit" class="btn" data-translate="bookingBtn">Confirm Booking</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p data-translate="footerText">© 2025 The Grand Haven Hotel. All rights reserved.</p>
+  </footer>
+
+  <!-- Floating Feedback Button -->
+  <a href="feedback.html" class="feedback-btn">F<span>eedback</span></a>
+
+  <!-- Floating Contact Button -->
+  <div class="contact-floating">
+    <button id="contactToggle" class="contact-btn">
+      <img src="assets/chat-bubble-svgrepo-com.svg" alt="Message" />
+    </button>
+    <div class="social-links">
+      <a href="https://wa.me/233599500764" target="_blank" class="social-btn">
+        <img src="assets/whatsapp-svgrepo-com.svg" alt="WhatsApp" />
+      </a>
+      <a href="https://instagram.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/instagram-1-svgrepo-com.svg" alt="Instagram" />
+      </a>
+      <a href="https://facebook.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/facebook-1-svgrepo-com.svg" alt="Facebook" />
+      </a>
+      <a href="https://x.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/X.png" alt="X" />
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // ===================== Translation Strings =====================
+    const translations = {
+      en: {
+        navHome: "Home",
+        navAbout: "About",
+        navRooms: "Rooms",
+        navBooking: "Book Now",
+        navGallery: "Gallery",
+        bookingHeading: "Book Your Stay",
+        bookingName: "Full Name:",
+        bookingEmail: "Email:",
+        bookingPhone: "Phone:",
+        bookingCheckin: "Check-in Date:",
+        bookingCheckout: "Check-out Date:",
+        bookingGuests: "Number of Guests:",
+        bookingBtn: "Confirm Booking",
+        footerText: "© 2025 The Grand Haven Hotel. All rights reserved."
+      },
+      fr: {
+        navHome: "Accueil",
+        navAbout: "À propos",
+        navRooms: "Chambres",
+        navBooking: "Réserver",
+        navGallery: "Galerie",
+        bookingHeading: "Réservez votre séjour",
+        bookingName: "Nom complet:",
+        bookingEmail: "Email:",
+        bookingPhone: "Téléphone:",
+        bookingCheckin: "Date d'arrivée:",
+        bookingCheckout: "Date de départ:",
+        bookingGuests: "Nombre d'invités:",
+        bookingBtn: "Confirmer la réservation",
+        footerText: "© 2025 L'Hôtel Grand Haven. Tous droits réservés."
+      },
+      es: {
+        navHome: "Inicio",
+        navAbout: "Acerca de",
+        navRooms: "Habitaciones",
+        navBooking: "Reservar",
+        navGallery: "Galería",
+        bookingHeading: "Reserve su estadía",
+        bookingName: "Nombre completo:",
+        bookingEmail: "Correo electrónico:",
+        bookingPhone: "Teléfono:",
+        bookingCheckin: "Fecha de entrada:",
+        bookingCheckout: "Fecha de salida:",
+        bookingGuests: "Número de huéspedes:",
+        bookingBtn: "Confirmar reserva",
+        footerText: "© 2025 El Hotel Grand Haven. Todos los derechos reservados."
+      }
+    };
+
+    // ===================== Apply Language =====================
+    function applyLanguage(lang) {
+      document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (translations[lang][key]) el.textContent = translations[lang][key];
+      });
+
+      document.querySelectorAll("input").forEach(el => {
+        const placeholderKey = "placeholder-" + lang;
+        if (el.dataset[placeholderKey]) el.placeholder = el.dataset[placeholderKey];
+      });
+
+      document.getElementById("langBtn").textContent = lang.toUpperCase() + " ▾";
+    }
+
+    function setLanguage(lang) {
+      localStorage.setItem("preferredLang", lang);
+      applyLanguage(lang);
+    }
+
+    const savedLang = localStorage.getItem("preferredLang") || "en";
+    applyLanguage(savedLang);
+
+    document.querySelectorAll(".dropdown-content a").forEach(item => {
+      item.addEventListener("click", e => {
+        e.preventDefault();
+        const lang = item.getAttribute("data-lang");
+        setLanguage(lang);
+      });
+    });
+
+    // ===================== Nav Active =====================
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".nav-link").forEach(link => {
+      if (link.getAttribute("href") === currentPage) link.classList.add("active");
+    });
+  </script>
+</body>
+</html>

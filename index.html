@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Grand Haven Hotel — Welcome</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="homepage">
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.jpg" alt="The Grand Haven Hotel" class="logo" />
+    </a>
+
+    <nav class="nav">
+      <a href="index.html" class="nav-link" data-translate="navHome">Home</a>
+      <a href="about.html" class="nav-link" data-translate="navAbout">About</a>
+      <a href="rooms.html" class="nav-link" data-translate="navRooms">Rooms</a>
+      <a href="booking.html" class="btn" data-translate="navBooking">Book Now</a>
+      <a href="gallery.html" class="nav-link" data-translate="navGallery">Gallery</a>
+
+      <!-- Language Selector -->
+      <div class="dropdown nav-link">
+        <button id="langBtn" class="dropbtn">EN ▾</button>
+        <div class="dropdown-content">
+          <a href="#" data-lang="en">English</a>
+          <a href="#" data-lang="fr">Français</a>
+          <a href="#" data-lang="es">Español</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="page-headings">
+      <h1 class="page-heading" data-translate="hotel">THE GRAND HAVEN HOTEL</h1>
+      <h2 class="sub-heading" data-translate="city">ACCRA</h2>
+    </div>
+  </section>
+
+  <!-- Description Section -->
+  <section class="hotel-description">
+    <p data-translate="intro">
+      5 Star Hotel in Accra, Ghana. <br>
+      Set in an urban oasis within the central district, our contemporary 5 Star hotel is only 7km 
+      from the airport where you will receive a warm Ghanaian welcome and complimentary airport shuttle. 
+      The Accra Financial Centre, World Trade Centre, International Conference Centre and Government Ministries 
+      are all close by.
+    </p>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p data-translate="footerText">© 2025 The Grand Haven Hotel. All rights reserved.</p>
+  </footer>
+
+  <a href="feedback.html" class="feedback-btn">F<span>eedback</span></a>
+
+  <!-- Floating Contact Button -->
+  <div class="contact-floating">
+    <button id="contactToggle" class="contact-btn">
+      <img src="assets/chat-bubble-svgrepo-com.svg" alt="Message" />
+    </button>
+    <div class="social-links">
+      <a href="https://wa.me/233599500764" target="_blank" class="social-btn">
+        <img src="assets/whatsapp-svgrepo-com.svg" alt="WhatsApp" />
+      </a>
+      <a href="https://instagram.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/instagram-1-svgrepo-com.svg" alt="Instagram" />
+      </a>
+      <a href="https://facebook.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/facebook-1-svgrepo-com.svg" alt="Facebook" />
+      </a>
+      <a href="https://x.com/yourhotel" target="_blank" class="social-btn">
+        <img src="assets/X.png" alt="X" />
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // ===================== All Translations =====================
+    const translations = {
+      en: {
+        navHome: "Home",
+        navAbout: "About",
+        navRooms: "Rooms",
+        navBooking: "Book Now",
+        navGallery: "Gallery",
+        hotel: "THE GRAND HAVEN HOTEL",
+        city: "ACCRA",
+        intro: "5 Star Hotel in Accra, Ghana. Set in an urban oasis within the central district, our contemporary 5 Star hotel is only 7km from the airport where you will receive a warm Ghanaian welcome and complimentary airport shuttle. The Accra Financial Centre, World Trade Centre, International Conference Centre and Government Ministries are all close by.",
+        footerText: "© 2025 The Grand Haven Hotel. All rights reserved."
+      },
+      fr: {
+        navHome: "Accueil",
+        navAbout: "À propos",
+        navRooms: "Chambres",
+        navBooking: "Réserver",
+        navGallery: "Galerie",
+        hotel: "L'HÔTEL GRAND HAVEN",
+        city: "ACCRA",
+        intro: "Hôtel 5 étoiles à Accra, Ghana. Situé dans une oasis urbaine au centre-ville, notre hôtel contemporain 5 étoiles se trouve à seulement 7 km de l'aéroport où vous recevrez un accueil chaleureux ghanéen et une navette gratuite. Le Centre financier d’Accra, le World Trade Centre, le Centre international de conférences et les ministères sont à proximité.",
+        footerText: "© 2025 L'Hôtel Grand Haven. Tous droits réservés."
+      },
+      es: {
+        navHome: "Inicio",
+        navAbout: "Acerca de",
+        navRooms: "Habitaciones",
+        navBooking: "Reservar",
+        navGallery: "Galería",
+        hotel: "EL HOTEL GRAND HAVEN",
+        city: "ACCRA",
+        intro: "Hotel de 5 estrellas en Accra, Ghana. Ubicado en un oasis urbano en el distrito central, nuestro hotel contemporáneo de 5 estrellas está a solo 7 km del aeropuerto, donde recibirá una cálida bienvenida ghanesa y transporte gratuito al aeropuerto. El Centro Financiero de Accra, el World Trade Centre, el Centro Internacional de Conferencias y los ministerios gubernamentales están cerca.",
+        footerText: "© 2025 El Hotel Grand Haven. Todos los derechos reservados."
+      }
+    };
+
+    // ===================== Apply Translations =====================
+    function applyTranslations(lang) {
+      document.querySelectorAll("[data-translate]").forEach(el => {
+        const key = el.getAttribute("data-translate");
+        if (translations[lang] && translations[lang][key]) {
+          el.textContent = translations[lang][key];
+        }
+      });
+
+      const langBtn = document.getElementById("langBtn");
+      if (langBtn) langBtn.textContent = lang.toUpperCase() + " ▾";
+    }
+
+    // ===================== Set Language =====================
+    function setLanguage(lang) {
+      localStorage.setItem("preferredLang", lang);
+      applyTranslations(lang);
+    }
+
+    // ===================== Load Language on Page Load =====================
+    const savedLang = localStorage.getItem("preferredLang") || "en";
+    applyTranslations(savedLang);
+
+    // ===================== Language Dropdown Clicks =====================
+    document.querySelectorAll(".dropdown-content a").forEach(item => {
+      item.addEventListener("click", (e) => {
+        e.preventDefault();
+        const lang = item.getAttribute("data-lang");
+        setLanguage(lang);
+      });
+    });
+
+    // ===================== Highlight Active Nav Link =====================
+    const currentPage = window.location.pathname.split("/").pop();
+    document.querySelectorAll(".nav-link").forEach(link => {
+      if (link.getAttribute("href") === currentPage) link.classList.add("active");
+    });
+
+    // ===================== Heading Animation =====================
+    const headings = document.querySelectorAll(".page-heading");
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    headings.forEach((heading, index) => {
+      const rect = heading.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        setTimeout(() => heading.classList.add("animate"), index * 400);
+      } else {
+        observer.observe(heading);
+      }
+    });
+
+    // ===================== Floating Contact Toggle =====================
+    const toggle = document.getElementById("contactToggle");
+    const links = document.querySelector(".social-links");
+    if (toggle && links) {
+      toggle.addEventListener("click", () => links.classList.toggle("show"));
+    }
+
+    // Hide feedback button on feedback page
+    const feedbackBtn = document.querySelector(".feedback-toggle");
+    if (feedbackBtn && window.location.pathname.includes("feedback.html")) {
+      feedbackBtn.style.display = "none";
+    }
+  </script>
+</body>
+</html>
